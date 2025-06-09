@@ -1,0 +1,372 @@
+body {
+  background-color: rgb(16, 16, 20);
+}
+.search-area,
+.main-box,
+.main-box-menu,
+.container,
+.achievement,
+.sort-options {
+  margin: 0 237.15px;
+}
+.search {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+
+.search-container {
+  width: auto;
+  height: auto;
+  margin: 20px 0;
+  /* 防止搜索框被压缩 */
+  flex-shrink: 0;
+}
+
+.search-box {
+  align-items: center;
+  background: rgb(32, 32, 36);
+  border-radius: 24px;
+  display: flex;
+  height: 40px;
+  margin: 8px 0px;
+  min-width: 230px;
+  width: 230px;
+  padding: 0 15px; /* 添加内边距让内容不贴边 */
+  transition: background-color 0.3s ease, opacity 0.3s ease; /* 添加过渡效果 */
+}
+
+.search-box:hover {
+  /* 数值>1变亮，<1变暗 */
+  filter: brightness(1.2);
+}
+
+.search-icon {
+  width: 12.72px;
+  height: 12.72px;
+  color: #999;
+}
+
+.search-input {
+  /* 隐藏溢出内容 */
+  overflow: hidden;
+  /* 用省略号表示被截断的文本 */
+  text-overflow: ellipsis;
+  /* 禁止文本换行 */
+  white-space: nowrap;
+  color: rgb(255, 255, 255);
+  width: 190px;
+  height: 40px;
+  margin-left: auto;
+  background: transparent;
+  /* 移除默认边框 */
+  border: none;
+  /* 移除聚焦轮廓 */
+  outline: none;
+  /* 输入框内边距 */
+  padding: 0 10px;
+}
+.menu {
+  display: flex;
+  /* 垂直居中 */
+  align-items: center;
+  gap: 40px;
+  padding: 0;
+  margin: 0;
+  /* 允许菜单填充剩余空间 */
+  flex-grow: 1;
+}
+
+.menu-item {
+  position: relative; /* 为伪元素提供定位上下文 */
+  display: inline-block; /* 确保可以包含伪元素 */
+  cursor: pointer;
+  color: #999;
+  transition: opacity 0.3s ease;
+  /* 防止文字换行 */
+  white-space: nowrap;
+  padding: 10px 0; /* 添加垂直padding */
+}
+
+.menu-item:hover {
+  color: white;
+}
+.title {
+  /* !important优先级最大，确保不会被覆盖 */
+  color: rgb(255, 255, 255) !important;
+}
+.main-box-menu .menu .menu-item:hover {
+  border-bottom: 2px solid rgb(38, 187, 255);
+}
+.container {
+  display: flex;
+  margin-top: 25px;
+  height: 320.11px; /* 精确设置高度 */
+  background-color: rgb(32, 32, 36);
+}
+
+.image-area {
+  width: 40%; /* 五分之二 */
+  height: 100%; /* 继承容器高度 */
+  overflow: hidden; /* 确保图片不超出容器 */
+}
+
+.image-area img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 保持图片比例并填充整个区域 */
+}
+
+.title-area {
+  width: 60%;
+  height: 100%;
+  display: flex; /* 使两个标题并排 */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.title-1,
+.title-2 {
+  flex: 1; /* 两个标题各占一半宽度 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 垂直居中 */
+  align-items: flex-start; /* 水平靠左 */
+  padding: 0 15px; /* 添加一些内边距 */
+  color: white;
+}
+
+h2,
+h4 {
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  margin-top: 8px;
+  font-size: 24px; /* 增大数字的字体大小 */
+}
+.achievement {
+  margin-top: 50px; /* 上边距 50px */
+  margin-bottom: 25px; /* 下边距 25px */
+  text-align: left; /* 文本居左 */
+  color: white;
+}
+.sort-container {
+  position: relative;
+  display: inline-block;
+  min-width: 220px;
+}
+
+.sort-button {
+  background-color: rgb(16, 16, 20);
+  color: #e6e6e6;
+  padding: 10px 16px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  outline: none; /* 移除默认的focus轮廓 */
+}
+
+/* 修复聚焦时的白色边框问题 */
+.sort-button:focus {
+  border-color: #666;
+}
+
+.sort-button::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #999;
+  margin-left: 8px;
+  transition: transform 0.2s ease;
+}
+
+.sort-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #2a2a2a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  overflow: hidden;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.2s ease;
+  border: 1px solid #444;
+  padding: 4px 0;
+  width: auto; /* 宽度自适应内容 */
+  min-width: 100%; /* 最小宽度与按钮相同 */
+}
+
+.sort-option {
+  padding: 10px 16px;
+  color: #e6e6e6;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: block;
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+  margin: 2px 4px; /* 添加外边距使悬停效果更美观 */
+  border-radius: 4px; /* 圆角矩形 */
+}
+
+/* 鼠标悬停时的浅灰色圆角矩形背景 */
+.sort-option:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sort-option.selected {
+  color: #e6e6e6;
+  background-color: transparent;
+}
+
+.sort-container.active .sort-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.sort-container.active .sort-button {
+  background-color: #333;
+  border-color: #666;
+}
+
+.sort-container.active .sort-button::after {
+  transform: rotate(180deg);
+}
+
+.dropdown-divider {
+  display: none;
+}
+
+.achievement-container {
+  width: 1140px;
+  height: 169px;
+  display: flex;
+  align-items: center; /* 垂直居中对齐 */
+  margin: 0; /* 居左对齐 */
+  padding: 0;
+  box-sizing: border-box;
+  border-bottom: 0.3px solid rgba(255, 255, 255, 0.65);
+}
+
+.achievement-container div.image-area {
+  width: 128px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.achievement-container div.image-area img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.achievement-container div.text-area {
+  width: calc(1140px - 128px);
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.achievement-container div.text-line {
+  margin: 5px 0;
+  color: white;
+  text-align: left;
+  line-height: 1.3;
+}
+.achievement-container div.text-line-2 {
+  margin: 5px 0;
+  color: rgba(255, 255, 255, 0.65) !important;
+  text-align: left;
+  line-height: 1.3;
+}
+.achievement-container div.text-line-3 {
+  margin: 5px 0;
+  color: rgba(255, 255, 255, 0.65) !important;
+  text-align: left;
+  font-size: 14px;
+}
+.column-container {
+  display: flex; /* 弹性布局，让列并排 */
+  flex-wrap: wrap; /* 屏幕窄时自动换行 */
+  justify-content: space-between; /* 列之间均匀分布 */
+  border-top: 0.3px solid rgba(255, 255, 255, 0.65);
+  border-bottom: 0.3px solid rgba(255, 255, 255, 0.65);
+  margin-top: 40px;
+}
+
+.column {
+  flex: 1 1 150px; /* 弹性项目，可增长、收缩，基础宽度150px */
+  margin: 10px; /* 列之间的间距 */
+}
+
+.column h3 {
+  color: white;
+  font-size: 16px;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+}
+
+.column ul {
+  list-style: none; /* 去掉默认列表样式 */
+}
+
+.column ul li {
+  margin: 5px 0;
+  color: rgba(255, 255, 255, 0.65);
+  cursor: pointer; /* 鼠标悬停变手型，模拟可点击 */
+  transition: color 0.2s ease; /* 颜色过渡动画 */
+}
+
+.column ul li:hover {
+  color: white;
+}
+.footer-container {
+  background-color: #111;
+  color: #ccc;
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 20px;
+  margin: 15px 30px;
+}
+
+.copyright-text {
+  text-align: left;
+  margin-bottom: 30px;
+  width: 50vw;
+  word-wrap: break-word;
+  font-size: 12px;
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none; /* 去掉默认下划线 */
+  margin-right: 15px; /* 链接之间的间距 */
+  transition: color 0.2s ease; /* 颜色过渡动画 */
+  font-size: 12px;
+}
+
+.footer-links a:hover {
+  color: white;
+}
